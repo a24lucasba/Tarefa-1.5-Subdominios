@@ -1,12 +1,12 @@
 services:
   dnsserver:
     build: dnsserver
-    hostname: dnsserver
+    hostname: darthvader
     ports:
       - 127.0.0.1:53:53
     networks:
       rededns:
-          ipv4_address: 192.168.20.100
+          ipv4_address: 192.168.20.10
     volumes:
       - ./dnsserver/conf/named.conf.options:/etc/bind/named.conf.options
       - ./dnsserver/conf/named.conf.local:/etc/bind/named.conf.local
@@ -14,11 +14,11 @@ services:
       - ./dnsserver/conf/db.20.168.192:/etc/bind/db.20.168.192
   eq1:
     build: debian
-    hostname: darthvader
+    hostname: eq1
     networks:
       rededns:
-          ipv4_address: 192.168.20.10
-    dns: 192.168.20.100
+          ipv4_address: 192.168.20.100
+    dns: 192.168.20.10
   dnsserver2:
     build: dnsserver2
     hostname: darthsidious
